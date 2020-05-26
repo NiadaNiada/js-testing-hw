@@ -1,15 +1,16 @@
 import React from 'react';
-import { fireEvent, queryByText, render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
 import Email from "./Email";
 
 describe('<Email />', function () {
   it('should renders show email button', () => {
     const value = 'danielgindi@gmail.com';
-    const { debug, queryByTestId, queryByText } = render(<Email value={value} />);
+    const { debug, getByTestId, queryByText } = render(<Email value={value} />);
 debug();
-    expect(queryByTestId('show-email-button')).toBeTruthy();
-    expect(queryByText('danielgindi@gmail.com')).not.toBe(value);
+
+    expect(getByTestId('show-email-button')).toHaveTextContent('show email');
+    expect(queryByText('danielgindi@gmail.com')).not.toBeInTheDocument();
   });
   /**
    * Check if the right button is displayed
@@ -30,7 +31,7 @@ debug();
     fireEvent.click(getByTestId('show-email-button'));
 
     expect(
-      queryByTestId(document.documentElement, 'show-email-button'),
+      queryByTestId('show-email-button'),
     ).not.toBeInTheDocument();
     expect(queryByText('danielgindi@gmail.com')).toBeTruthy();
 
