@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PageTitle /> should match the snapshot 1`] = `
+<div>
+  <h1
+    class="page-title"
+    data-testid="page-title"
+  >
+    Github user details
+  </h1>
+</div>
+`;
